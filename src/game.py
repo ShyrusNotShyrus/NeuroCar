@@ -1,4 +1,5 @@
 from settings import TITLE, FPS, TRACK
+from car import Car
 import pygame
 
 class Game:
@@ -13,6 +14,8 @@ class Game:
         self.width, self.height = track_image.get_size()
         self.screen = pygame.display.set_mode((self.width,self.height))
 
+        self.car = Car(0,0)
+
 
     def run(self):
         while self.running:
@@ -24,7 +27,18 @@ class Game:
         pygame.quit()
 
     def update(self):
-        pass
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            self.car.throttle()
+        else:
+            self.car.apply_friction()
+
+        if keys[pygame.K_a]:
+            self.car.turn(1)
+        if keys[pygame.K_d]:
+            self.car.turn(-1)
+            
+        self.car.move()
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -34,4 +48,5 @@ class Game:
     def draw_track(self, track):
         self.background = pygame.image.load(track).convert()
         self.screen.blit(self.background, (0, 0))
+        self.car.draw(self.screen)                
         pygame.display.flip() 
