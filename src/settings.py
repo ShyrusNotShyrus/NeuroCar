@@ -1,8 +1,10 @@
 FPS = 60
 TITLE = "NeuroCar"
 BACKGROUND  = (30,30,30)
-TRACK = "assets/track1.png"
+TRACK = "assets/track2.png"
 PLAYER1_CAR_IMAGE = "assets/car1.png"
+
+START_END_COLOR = (237, 28, 36)
 
 CAR_ACCELERATION = 0.15
 CAR_MAX_SPEED = 6

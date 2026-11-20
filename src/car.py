@@ -5,14 +5,25 @@ from PIL import Image
 
 class Car:
 
-    def __init__(self, x, y):
+    def __init__(self, pos, angle):
         
         self.image = self.initialize_car_iamge(PLAYER1_CAR_IMAGE)
-        self.x = x
-        self.y = y
+
+        x_offset = 0
+        y_offset = 0
+
+        if angle == 0:
+            x_offset = -30
+            y_offset = 0
+        else:
+            x_offset = 0
+            y_offset = 25
+
+        self.x = pos[0] + x_offset
+        self.y = pos[1] + y_offset
         self.speed = 0
         self.speed = 0
-        self.angle = 0
+        self.angle = angle
         
         return
 
